@@ -63,3 +63,23 @@ vars:
     hash_stage_prefixes: ['stg_']
     raw_vault_folder_name: 'raw_vault'
     raw_vault_prefixes: ['hub_', 'link_', 'sat_', 'date_']
+    business_vault_folder_name: 'business_vault'
+    business_vault_prefixes: ['pit_', 'bridge_', 'ref_']
+    marts_folder_name: 'marts'
+    marts_prefixes: ['dim_', 'fct_']
+    # set model fanout threshold
+    models_fanout_threshold: 5
+    # exclude packages
+    exclude_packages: ["dbt_artifacts", "dbt_project_evaluator"]
+    exclude_paths_from_project: ["/date_spine.sql"]
+
+dispatch:
+  - macro_namespace: dbt
+    search_order: ['dbt_project_evaluator', 'dbt']
+
+# Configuring seeds
+# Full documentation: https://docs.getdbt.com/reference/seed-configs
+seeds:
+  dbt_project_evaluator:
+    dbt_project_evaluator_exceptions:
+      +enabled: false
