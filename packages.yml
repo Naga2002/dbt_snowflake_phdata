@@ -6,6 +6,6 @@ packages:
   - package: Snowflake-Labs/dbt_constraints
     version: 0.6.1
   - package: brooklyn-data/dbt_artifacts
-    version: 2.4.3
+    version: 2.5.0
   - package: dbt-labs/dbt_project_evaluator
     version: 0.6.2
