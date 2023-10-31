@@ -33,7 +33,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   nmott_phdata:
-    # Applies to all files under models/example/
-    example:
-      schema: example
-      materialized: view
+
+
