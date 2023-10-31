@@ -24,16 +24,54 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+# Configuring seeds
+# Full documentation: https://docs.getdbt.com/reference/seed-configs
+seeds:
+  dbt_project_evaluator:
+    dbt_project_evaluator_exceptions:
+      +enabled: false
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/ directory
-# as tables. These settings can be overridden in the individual model files
-# using the `{{ config(...) }}` macro.
 models:
   nmott_phdata:
+    staging:
+      +materialized: view
+      +database: "sandbox"
+      +schema: "staging"
+    raw_vault:
+      +materialized: table
+      +database: "sandbox"
+      +schema: "data_vault"
+    business_vault:
+      +materialized: table
+      +database: "sandbox"
+      +schema: "data_vault"
+    marts:
+      +materialized: table
+      +database: "sandbox"
+      +schema: "data_mart"
 
+  dbt_project_evaluator:
+    +database: "sandbox"
+    +schema: "dbt_project_evaluator"
+
+  dbt_artifacts:
+    +database: "sandbox" # optional, default is your target database
+    +schema: "dbt_artifacts" # optional, default is your target schema
+    staging:
+      +database: "sandbox" # optional, default is your target database
+      +schema: "dbt_artifacts_stg" # optional, default is your target schema
+    sources:
+      +database: "sandbox" # optional, default is your target database
+      +schema: "dbt_artifacts_src" # optional, default is your target schema
+
+on-run-end:
+  - "{% if target.name == 'prod' %}{{ dbt_artifacts.upload_results(results) }}{% endif %}"
+
+dispatch:
+  - macro_namespace: dbt
+    search_order: ['dbt_project_evaluator', 'dbt']
 
 vars:
   # The package can be temporarily disabled using this variable
@@ -73,13 +111,5 @@ vars:
     exclude_packages: ["dbt_artifacts", "dbt_project_evaluator"]
     exclude_paths_from_project: ["/date_spine.sql"]
 
-dispatch:
-  - macro_namespace: dbt
-    search_order: ['dbt_project_evaluator', 'dbt']
 
-# Configuring seeds
-# Full documentation: https://docs.getdbt.com/reference/seed-configs
-seeds:
-  dbt_project_evaluator:
-    dbt_project_evaluator_exceptions:
-      +enabled: false
+
