@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: pubs
+    database: sandbox
+    schema: nmott_dbt_raw_data
+    tables:
+      - name: pubs_authors
+      - name: pubs_discounts
+      - name: pubs_employee
+      - name: pubs_jobs
+      - name: pubs_publishers
+      - name: pubs_pub_info
+      - name: pubs_roysched
+      - name: pubs_sales
+      - name: pubs_stores
+      - name: pubs_titleauthor
+      - name: pubs_titles
+                       
+
+            

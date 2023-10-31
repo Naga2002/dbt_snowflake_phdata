@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: base_pubs__authors
+    description: This is the base staging model for authors from the pubs dataset
+    tests:
+      # Single column constraints
+      - dbt_constraints.primary_key:
+          column_names:
+            - au_id
+      - dbt_constraints.unique_key:
+          column_names:
+            - au_id
