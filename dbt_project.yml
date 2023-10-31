@@ -35,3 +35,31 @@ models:
   nmott_phdata:
 
 
+vars:
+  # The package can be temporarily disabled using this variable
+  dbt_constraints_enabled: true
+
+  # The package can also add constraints on sources if you have sufficient privileges
+  dbt_constraints_sources_enabled: false
+
+  # You can also be specific on which constraints are enabled for sources
+  # You must also enable dbt_constraints_sources_enabled above
+  dbt_constraints_sources_pk_enabled: true
+  dbt_constraints_sources_uk_enabled: true
+  dbt_constraints_sources_fk_enabled: true
+  dbt_constraints_sources_nn_enabled: true
+
+  dbt_project_evaluator:
+    # set doc and test coverage percentage
+    documentation_coverage_target: 75
+    test_coverage_target: 75
+    # set constraints tests as primary key test
+    primary_key_test_macros: [["dbt.test_unique", "dbt.test_not_null"],["dbt_constraints.test_primary_key"]]
+    # set model types
+    model_types: ['staging', 'hash_stage', 'raw_vault', 'business_vault', 'marts', 'other', 'intermediate']
+    staging_folder_name: 'base'
+    staging_prefixes: ['base_']
+    hash_stage_folder_name: 'stage'
+    hash_stage_prefixes: ['stg_']
+    raw_vault_folder_name: 'raw_vault'
+    raw_vault_prefixes: ['hub_', 'link_', 'sat_', 'date_']
