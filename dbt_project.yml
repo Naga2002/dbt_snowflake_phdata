@@ -40,11 +40,11 @@ models:
       +database: "sandbox"
       +schema: "staging"
     raw_vault:
-      +materialized: table
+      +materialized: incremental
       +database: "sandbox"
       +schema: "data_vault"
     business_vault:
-      +materialized: table
+      +materialized: incremental
       +database: "sandbox"
       +schema: "data_vault"
     marts:
