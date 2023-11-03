@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_authors
+    description: This is the data vault hashed staging model for authors
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - AUTHOR_HK
+      - dbt_constraints.unique_key:
+          column_names:
+            - AUTHOR_HK
+  - name: stg_titles
+    description: This is the data vault hashed staging model for titles from the pubs dataset
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - TITLE_HK
+      - dbt_constraints.unique_key:
+          column_names:
+            - TITLE_HK
+  - name: stg_titleauthor
+    description: This is the data vault hashed staging model for titleauthor from the pubs dataset
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - AUTHOR_HK
+            - TITLE_HK
+      - dbt_constraints.unique_key:
+          column_names:
+            - AUTHOR_HK
+            - TITLE_HK                 
