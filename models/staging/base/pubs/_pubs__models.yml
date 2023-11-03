@@ -4,7 +4,6 @@ models:
   - name: base_pubs__authors
     description: This is the base staging model for authors from the pubs dataset
     tests:
-      # Single column constraints
       - dbt_constraints.primary_key:
           column_names:
             - au_id
@@ -14,10 +13,20 @@ models:
   - name: base_pubs__titles
     description: This is the base staging model for titles from the pubs dataset
     tests:
-      # Single column constraints
       - dbt_constraints.primary_key:
           column_names:
             - title_id
       - dbt_constraints.unique_key:
           column_names:
-            - title_id            
+            - title_id
+  - name: base_pubs__titleauthor
+    description: This is the base staging model for titleauthor from the pubs dataset
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - au_id
+            - title_id
+      - dbt_constraints.unique_key:
+          column_names:
+            - au_id
+            - title_id                 
