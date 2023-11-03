@@ -11,3 +11,13 @@ models:
       - dbt_constraints.unique_key:
           column_names:
             - au_id
+  - name: base_pubs__titles
+    description: This is the base staging model for titles from the pubs dataset
+    tests:
+      # Single column constraints
+      - dbt_constraints.primary_key:
+          column_names:
+            - title_id
+      - dbt_constraints.unique_key:
+          column_names:
+            - title_id            
