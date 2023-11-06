@@ -29,4 +29,13 @@ models:
       - dbt_constraints.unique_key:
           column_names:
             - AUTHOR_HK
-            - TITLE_HK                 
+            - TITLE_HK
+  - name: stg_stores
+    description: This is the data vault hashed staging model for stores
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - STORE_HK
+      - dbt_constraints.unique_key:
+          column_names:
+            - STORE_HK                         
