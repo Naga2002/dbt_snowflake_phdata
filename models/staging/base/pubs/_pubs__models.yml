@@ -30,3 +30,12 @@ models:
           column_names:
             - au_id
             - title_id                 
+  - name: base_pubs__stores
+    description: This is the base staging model for stores from the pubs dataset
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - store_id
+      - dbt_constraints.unique_key:
+          column_names:
+            - store_id                
