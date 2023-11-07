@@ -1,18 +1,21 @@
 {%- set yaml_metadata -%}
-source_model: 'base_pubs__stores'
+source_model: 'base_pubs__sales'
 derived_columns:
-  RECORD_SOURCE: '!BASE_PUBS__STORES'
+  RECORD_SOURCE: '!BASE_PUBS__SALES'
   LOAD_DATETIME: CURRENT_TIMESTAMP
 hashed_columns:
   STORE_HK: 'store_id'
-  STORE_DETAIL_HASHDIFF:
+  TITLE_HK: 'title_id'
+  LINK_SALE_STORE_TITLE_HK: 
+    - 'store_id'
+    - 'title_id'
+  SALE_STORE_TITLE_DETAIL_HASHDIFF:
     is_hashdiff: true
     columns:
-      - 'store_name'
-      - 'store_address'
-      - 'city'
-      - 'state'
-      - 'zip'      
+      - 'order_number'
+      - 'order_date'
+      - 'quantity'
+      - 'payterms'   
 {%- endset -%}
 
 {% set metadata_dict = fromyaml(yaml_metadata) %}

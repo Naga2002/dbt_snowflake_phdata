@@ -38,4 +38,15 @@ models:
             - STORE_HK
       - dbt_constraints.unique_key:
           column_names:
-            - STORE_HK                         
+            - STORE_HK
+  - name: stg_sales
+    description: This is the data vault hashed staging model for sales from the pubs dataset
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - STORE_HK
+            - TITLE_HK
+      - dbt_constraints.unique_key:
+          column_names:
+            - STORE_HK
+            - TITLE_HK                               

@@ -38,4 +38,15 @@ models:
             - store_id
       - dbt_constraints.unique_key:
           column_names:
-            - store_id                
+            - store_id
+  - name: base_pubs__sales
+    description: This is the base staging model for sales from the pubs dataset
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - store_id
+            - title_id
+      - dbt_constraints.unique_key:
+          column_names:
+            - store_id
+            - title_id                              

@@ -1,4 +1,4 @@
-{%- set source_model = "stg_storess" -%}
+{%- set source_model = "stg_stores" -%}
 {%- set src_pk = "STORE_HK" -%}
 {%- set src_nk = "store_id" -%}
 {%- set src_ldts = "LOAD_DATETIME" -%}
