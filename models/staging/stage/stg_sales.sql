@@ -4,15 +4,15 @@ derived_columns:
   RECORD_SOURCE: '!BASE_PUBS__SALES'
   LOAD_DATETIME: CURRENT_TIMESTAMP
 hashed_columns:
+  SALE_HK: 'order_number'
   STORE_HK: 'store_id'
   TITLE_HK: 'title_id'
   LINK_SALE_STORE_TITLE_HK: 
     - 'store_id'
     - 'title_id'
-  SALE_STORE_TITLE_DETAIL_HASHDIFF:
+  SALE_DETAIL_HASHDIFF:
     is_hashdiff: true
     columns:
-      - 'order_number'
       - 'order_date'
       - 'quantity'
       - 'payterms'   

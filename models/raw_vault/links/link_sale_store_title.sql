@@ -1,6 +1,6 @@
 {%- set source_model = "stg_sales" -%}
 {%- set src_pk = "LINK_SALE_STORE_TITLE_HK" -%}
-{%- set src_fk = ["STORE_HK", "TITLE_HK"] -%}
+{%- set src_fk = ["SALE_HK", "STORE_HK", "TITLE_HK"] -%}
 {%- set src_ldts = "LOAD_DATETIME" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 
