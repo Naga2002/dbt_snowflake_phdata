@@ -14,6 +14,7 @@ hashed_columns:
   AUTHOR_CONTACT_HASHDIFF:
     is_hashdiff: true
     columns:
+      - 'au_id'
       - 'phone'
   AUTHOR_ADDRESS_HASHDIFF:
     is_hashdiff: true
