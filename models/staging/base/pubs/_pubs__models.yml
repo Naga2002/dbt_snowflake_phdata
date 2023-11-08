@@ -44,9 +44,11 @@ models:
     tests:
       - dbt_constraints.primary_key:
           column_names:
+            - order_number
             - store_id
             - title_id
       - dbt_constraints.unique_key:
           column_names:
+            - order_number
             - store_id
             - title_id                              

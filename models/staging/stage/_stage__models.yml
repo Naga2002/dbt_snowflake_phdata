@@ -44,9 +44,11 @@ models:
     tests:
       - dbt_constraints.primary_key:
           column_names:
+            - ORDER_HK
             - STORE_HK
             - TITLE_HK
       - dbt_constraints.unique_key:
           column_names:
+            - ORDER_HK
             - STORE_HK
             - TITLE_HK                               

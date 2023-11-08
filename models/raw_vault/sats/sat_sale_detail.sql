@@ -1,5 +1,5 @@
 {%- set source_model = "stg_sales" -%}
-{%- set src_pk = "SALE_HK" -%}
+{%- set src_pk = "LINK_SALE_STORE_TITLE_HK" -%}
 {%- set src_hashdiff = "SALE_DETAIL_HASHDIFF" -%}
 {%- set src_payload = ['order_date', 'quantity', 'payterms'] -%}
 {%- set src_ldts = "LOAD_DATETIME" -%}
