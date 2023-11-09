@@ -11,6 +11,6 @@ My initial Data Vault 2.0 model using Pubs dataset just includes three main hubs
  - store
 
 Satellites and links were built around those three hubs. There are base models, staging hash models, raw vault and one business vault model.
-![pubs_data_vault-Raw Vault.drawio.png](../.github/assets/pubs_data_vault-Raw Vault.drawio.png)
+![pubs_data_vault-Raw Vault.drawio.png](./.github/assets/pubs_data_vault-Raw Vault.drawio.png)
 
 The dbt project leverages the [AutomateDv package](https://automate-dv.readthedocs.io/en/latest/).
