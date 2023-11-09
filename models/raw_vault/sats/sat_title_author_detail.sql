@@ -1,7 +1,7 @@
 {%- set source_model = "stg_titleauthor" -%}
 {%- set src_pk = "LINK_TITLE_AUTHOR_HK" -%}
 {%- set src_hashdiff = "TITLE_AUTHOR_DETAIL_HASHDIFF" -%}
-{%- set src_payload = ['au_ord', 'royaltyper'] -%}
+{%- set src_payload = ['author_order', 'royaltyper'] -%}
 {%- set src_ldts = "LOAD_DATETIME" -%}
 {%- set src_source = "RECORD_SOURCE" -%}
 

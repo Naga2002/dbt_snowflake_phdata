@@ -12,7 +12,7 @@ hashed_columns:
   TITLE_AUTHOR_DETAIL_HASHDIFF:
     is_hashdiff: true
     columns:
-      - 'au_ord'
+      - 'author_order'
       - 'royaltyper'
 {%- endset -%}
 

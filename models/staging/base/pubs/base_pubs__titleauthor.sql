@@ -1,12 +1,20 @@
 with
-source_table as (
+source as (
+
+    select * from {{ source('pubs', 'pubs_titleauthor') }}
+
+),
+
+renamed as (
+
     select
         au_id,
         title_id,
-        au_ord,
+        au_ord as author_order,
         royaltyper
-    from {{ source("pubs", "pubs_titleauthor") }}
+
+    from source
+
 )
 
-select *
-from source_table
+select * from renamed
