@@ -11,7 +11,7 @@ WITH sat_store_detail_latest AS (
             PARTITION BY sd.store_hk
             ORDER BY sd.load_datetime ASC
         ) AS asc_rank
-    FROM sat_store_detail AS sd
+    FROM {{ ref('sat_store_detail') }} AS sd
     QUALIFY asc_rank = 1
 ),
 
