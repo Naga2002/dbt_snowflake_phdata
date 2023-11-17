@@ -56,4 +56,4 @@ renamed AS (
         ON s_tdl.title_hk = s_tml.title_hk
 )
 
-SELECT * FROM renamed;
+SELECT * FROM renamed

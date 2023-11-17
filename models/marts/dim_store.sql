@@ -40,4 +40,4 @@ renamed AS (
         ON h_s.store_hk = s_sdl.store_hk
 )
 
-SELECT * FROM renamed;
+SELECT * FROM renamed
