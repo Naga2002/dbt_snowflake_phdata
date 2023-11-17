@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: Fact table for publisher sales. Grain is row per title sold to store on an order.
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - fct_sales_pk
+      - dbt_constraints.unique_key:
+          column_names:
+            - dim_title_pk
+            - dim_store_pk
+            - order_number
+      - dbt_constraints.foreign_key:
+          fk_column_name: dim_title_pk
+          pk_table_name: ref('dim_title')
+          pk_column_name: dim_title_pk
+      - dbt_constraints.foreign_key:
+          fk_column_name: dim_store_pk
+          pk_table_name: ref('dim_store')
+          pk_column_name: dim_store_pk                        
+  - name: dim_title
+    description: Dimension table for titles - Type 1 history.
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - dim_title_pk
+      - dbt_constraints.unique_key:
+          column_names:
+            - title_id
+  - name: dim_store
+    description: Dimension table for stores - Type 1 history.
+    tests:
+      - dbt_constraints.primary_key:
+          column_names:
+            - dim_store_pk
+      - dbt_constraints.unique_key:
+          column_names:
+            - store_id
