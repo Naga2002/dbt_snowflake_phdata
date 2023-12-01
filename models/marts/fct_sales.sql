@@ -11,6 +11,7 @@ with sat_sale_detail_latest as (
     from {{ ref('sat_sale_detail') }} as sd
     qualify asc_rank = 1
 ),
+
 sat_title_author_detail_latest as (
     select
         sd.link_title_author_hk,
@@ -23,10 +24,12 @@ sat_title_author_detail_latest as (
     from {{ ref('sat_title_author_detail') }} as sd
     qualify asc_rank = 1
 ),
+
 link_sale_store_title_src as (
     select *
     from {{ ref('link_sale_store_title') }}
 ),
+
 link_title_author_src as (
     select
         link_title_author_hk,
@@ -51,13 +54,22 @@ final as (
         l_sst.link_sale_store_title_hk as fct_sales_pk,
         l_sst.store_hk as dim_store_pk,
         l_sst.title_hk as dim_title_pk,
-        papt.author_hk as dim_author_primary_pk,
+        CAST(MD5_BINARY(NULLIF(CONCAT_WS(
+            '||',
+            COALESCE(
+                NULLIF(UPPER(TRIM(CAST(papt.author_hk as VARCHAR))), ''), '^^'
+            ),
+            COALESCE(
+                NULLIF(UPPER(TRIM(CAST(s_sdl.order_date as VARCHAR))), ''), '^^'
+            )
+        ), '^^||^^')) as BINARY(16)) as dim_author_history_primary_pk,        
         l_sst.order_number,
         s_sdl.order_date,
         s_sdl.quantity,
         s_sdl.payterms,
         l_sst.load_datetime as valid_from,
         l_sst.record_source as source
+
     from link_sale_store_title_src as l_sst
     inner join sat_sale_detail_latest as s_sdl
         on l_sst.link_sale_store_title_hk = s_sdl.link_sale_store_title_hk
