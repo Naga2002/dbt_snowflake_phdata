@@ -60,7 +60,7 @@ final as (
                 NULLIF(UPPER(TRIM(CAST(papt.author_hk as VARCHAR))), ''), '^^'
             ),
             COALESCE(
-                NULLIF(UPPER(TRIM(CAST(s_sdl.order_date as VARCHAR))), ''), '^^'
+                NULLIF(UPPER(TRIM(CAST(CAST(s_sdl.order_date as date) as VARCHAR))), ''), '^^'
             )
         ), '^^||^^')) as BINARY(16)) as dim_author_history_primary_pk,        
         l_sst.order_number,
