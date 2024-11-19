@@ -2,7 +2,7 @@
 This is my dbt project connected to my phdata snowflake instance.
 
 ## Current usecase - Data Vault 2.0 using Pubs dataset
-I started with pulling in [sample relational data](https://relational.fit.cvut.cz/dataset/Pubs) of a book publishing company.
+I started with pulling in [sample relational data](https://relational-data.org/dataset/Pubs) of a book publishing company.
 
 My initial Data Vault 2.0 model using Pubs dataset just includes three main hubs:
 
