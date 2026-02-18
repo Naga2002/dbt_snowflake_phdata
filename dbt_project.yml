@@ -73,6 +73,9 @@ dispatch:
   - macro_namespace: dbt
     search_order: ['dbt_project_evaluator', 'dbt']
 
+flags:
+  require_generic_test_arguments_property: False
+
 vars:
   # The package can be temporarily disabled using this variable
   dbt_constraints_enabled: true
