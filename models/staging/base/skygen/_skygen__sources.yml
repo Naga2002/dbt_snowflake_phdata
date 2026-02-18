@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: skygen
+    database: stage
+    schema: schemadb
+    tables:
+      - name: table1
