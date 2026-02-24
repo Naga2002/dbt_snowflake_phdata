@@ -5,24 +5,16 @@ models:
     description: This is the base staging model for authors from the pubs dataset
     tests:
       - dbt_constraints.primary_key:
-          arguments:
-            column_names:
-              - au_id
+            column_name: au_id
       - dbt_constraints.unique_key:
-          arguments:
-            column_names:
-              - au_id
+            column_name: au_id
   - name: base_pubs__titles
     description: This is the base staging model for titles from the pubs dataset
     tests:
       - dbt_constraints.primary_key:
-          arguments:
-            column_names:
-              - title_id
+            column_name: title_id
       - dbt_constraints.unique_key:
-          arguments:
-            column_names:
-              - title_id
+            column_name: title_id
   - name: base_pubs__titleauthor
     description: This is the base staging model for titleauthor from the pubs dataset
     tests:
@@ -40,13 +32,9 @@ models:
     description: This is the base staging model for stores from the pubs dataset
     tests:
       - dbt_constraints.primary_key:
-          arguments:
-            column_names:
-              - store_id
+            column_name: store_id
       - dbt_constraints.unique_key:
-          arguments:
-            column_names:
-              - store_id
+            column_name: store_id
   - name: base_pubs__sales
     description: This is the base staging model for sales from the pubs dataset
     tests:

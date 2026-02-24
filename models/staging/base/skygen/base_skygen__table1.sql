@@ -1,3 +1,10 @@
+{{
+    config(
+        database='stage',
+        schema='schemadb'
+    )
+}}
+
 with
 
 source as (
