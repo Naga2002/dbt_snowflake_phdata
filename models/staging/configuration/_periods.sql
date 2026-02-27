@@ -39,18 +39,7 @@ final as (
         -- defined how SKYGEN does it today
         -- 1 month into the future as 1 and increasing offset going backwards
         row_number() over (order by period_date desc) as offset,
-        -- 5) Offset_new
-        -- more traditional way of defining offset
-        -- current month = 0, future months count backwards as negative
-        -- past months count upwards as positive
-        (
-            datediff(
-                month,
-                date_trunc('month', current_date),
-                period_date
-            )
-        ) * -1                                      as offset_new
-    from months
+
 )
 
 select *
