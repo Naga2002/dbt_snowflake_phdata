@@ -39,6 +39,7 @@ final as (
         -- defined how SKYGEN does it today
         -- 1 month into the future as 1 and increasing offset going backwards
         row_number() over (order by period_date desc) as offset,
+    from months
 
 )
 
