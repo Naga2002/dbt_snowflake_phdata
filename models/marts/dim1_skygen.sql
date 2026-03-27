@@ -1,6 +1,6 @@
 {{ config(
     materialized='incremental',
-    unique_key='ID',
+    unique_key='dim1key',
     incremental_strategy='merge',
     on_schema_change='append_new_columns'
 ) }}
@@ -101,7 +101,7 @@ final AS (
 )
 
 SELECT
-        dim1key,
+    dim1key,
     id,
     col1,
     recordcreatedatetime,
