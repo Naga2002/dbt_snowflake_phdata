@@ -7,6 +7,9 @@
 
 WITH source_data AS (
     SELECT
+    {{ dbt_utils.generate_surrogate_key([
+  	'id',
+  ]) }} as dim1key,
         id,
         description AS col1,
         recordupdatedatetime
@@ -22,6 +25,7 @@ WITH source_data AS (
 existing_records AS (
     {% if is_incremental() %}
         SELECT
+            dim1key,
             id,
             col1,
             recordcreatedatetime,
@@ -32,6 +36,7 @@ existing_records AS (
         WHERE recordiscurrent = 1
     {% else %}
     SELECT 
+      NULL AS dim1key,
       NULL AS ID,
       NULL AS Col1,
       NULL AS RecordCreateDatetime,
@@ -44,6 +49,7 @@ existing_records AS (
 
 new_records AS (
     SELECT
+        s.dim1key,
         s.id,
         s.col1,
         cast('2199-12-31' AS DATE) AS recordenddate,
@@ -57,6 +63,7 @@ new_records AS (
 
 updated_records AS (
     SELECT
+        s.dim1key,
         s.id,
         s.col1,
         e.recordcreatedatetime,
@@ -71,6 +78,7 @@ updated_records AS (
 
 records_to_expire AS (
     SELECT
+        e.dim1key,
         e.id,
         e.col1,
         e.recordcreatedatetime,
@@ -93,6 +101,7 @@ final AS (
 )
 
 SELECT
+        dim1key,
     id,
     col1,
     recordcreatedatetime,

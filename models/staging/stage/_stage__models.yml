@@ -5,24 +5,16 @@ models:
     description: This is the data vault hashed staging model for authors
     tests:
       - dbt_constraints.primary_key:
-          arguments:
-            column_names:
-              - AUTHOR_HK
+          column_name: AUTHOR_HK
       - dbt_constraints.unique_key:
-          arguments:
-            column_names:
-              - AUTHOR_HK
+          column_name: AUTHOR_HK
   - name: stg_titles
     description: This is the data vault hashed staging model for titles from the pubs dataset
     tests:
       - dbt_constraints.primary_key:
-          arguments:
-            column_names:
-              - TITLE_HK
+          column_name: TITLE_HK
       - dbt_constraints.unique_key:
-          arguments:
-            column_names:
-              - TITLE_HK
+          column_name: TITLE_HK
   - name: stg_titleauthor
     description: This is the data vault hashed staging model for titleauthor from the pubs dataset
     tests:
@@ -40,13 +32,9 @@ models:
     description: This is the data vault hashed staging model for stores
     tests:
       - dbt_constraints.primary_key:
-          arguments:
-            column_names:
-              - STORE_HK
+          column_name: STORE_HK
       - dbt_constraints.unique_key:
-          arguments:
-            column_names:
-              - STORE_HK
+          column_name: STORE_HK
   - name: stg_sales
     description: This is the data vault hashed staging model for sales from the pubs dataset
     tests:

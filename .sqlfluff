@@ -6,6 +6,9 @@ runaway_limit = 10
 max_line_length = 80
 indent_unit = space
 
+[sqlfluff:templater:dbt]
+dbt_skip_compilation_error = True
+
 [sqlfluff:indentation]
 tab_space_size = 4
 
@@ -36,3 +39,4 @@ capitalisation_policy = lower
 
 [sqlfluff:rules:ambiguous.column_references]  # Number in group by
 group_by_and_order_by_style = implicit
+
